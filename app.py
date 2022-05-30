@@ -18,9 +18,9 @@ def main() :
             "nav-link-selected": {"background-color": "#02ab21"},
         }
         )
-        if choose == menu[0] :
+    if choose == menu[0] :
             run_home()
-        elif choose == menu[1] :
+    elif choose == menu[1] :
             run_eda()
 
 if __name__=='__main__' :
