@@ -3,8 +3,9 @@ from streamlit_option_menu import option_menu
 from app_eda import run_eda
 
 from app_home import run_home
-
+from PIL import Image
 def main() :
+    
     st.title('Webtoons')
     menu = ['Home', 'EDA']
     with st.sidebar:
