@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-
+from PIL import Image
 def run_home() :
     df1 = pd.read_csv('data/pre_data.csv', index_col=0)
     df2 = pd.read_csv('data/X.csv', index_col=0)
@@ -14,6 +14,9 @@ def run_home() :
     if len(search_list) != 0 :
         selected = st.selectbox('검색 결과 리스트', search_list)
         st.subheader(selected)
+        image = Image.open(df1.loc[df1['title'] == 'selected',
+                            'thumbnail'].values[0])
+        st.image(image, caption='Sunrise by the mountains')
     else :
         st.text('검색 결과가 없습니다.')
 
