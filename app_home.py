@@ -12,6 +12,7 @@ def run_home() :
     y = pd.read_csv('data/y.csv', index_col=0)
     kn = joblib.load('data/kn.pkl')
 
+
     search = st.text_input('웹툰명이나 장르 검색')
     search_result = df1.loc[df1['title'].str.lower().str.contains(search) | 
             df1['genre'].str.lower().str.contains(search),]
