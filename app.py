@@ -5,6 +5,7 @@ from app_eda import run_eda
 from app_home import run_home
 
 def main() :
+    st.title('Webtoons')
     menu = ['Home', 'EDA']
     with st.sidebar:
     
@@ -17,6 +18,7 @@ def main() :
             "nav-link": {"font-size": "16px", "text-align": "left", "margin":"0px", "--hover-color": "#BD93F9"},
             "nav-link-selected": {"background-color": "#02ab21"},
         }
+       
         )
     if choose == menu[0] :
             run_home()
