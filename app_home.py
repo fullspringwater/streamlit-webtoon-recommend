@@ -61,9 +61,8 @@ def run_home() :
 
 
         url = df1.loc[df1['title'] == selected,'url'].values[0]
-        btn1 = st.button('보러가기')
-        if btn1:
-            webbrowser.open_new_tab(url)
+        st.subheader('[보러가기]({})'.format(url))
+
         st.markdown("---")
         st.subheader('다른 추천 웹툰')
 
@@ -76,6 +75,7 @@ def run_home() :
         summary = []
         genre = []
         recommended_url = []
+
         for webtoon in nearest_webtoons :
             summary.append(df1.loc[df1['title'] == webtoon]['summary'].reset_index().values[0,1])
             genre.append(df1.loc[df1['title'] == webtoon]['genre'].reset_index().values[0,1])
@@ -91,7 +91,7 @@ def run_home() :
                                      '줄거리' : summary,
                                      'url' : recommended_url} )
         recommended_webtoons.sort_values('유사도', ascending =False, inplace = True)
-
+        
         for i in range(4) :
 
             st.markdown(""" <style> .font {
@@ -102,19 +102,21 @@ def run_home() :
              #유사도
             st.subheader(recommended_webtoons.columns[1])
             st.text('{} %'.format(round(recommended_webtoons.iloc[i,1]*100)))
+            
             # 장르
             st.subheader(recommended_webtoons.columns[2])
             st.write(recommended_webtoons.iloc[i,2])
+           
             #줄거리
             st.subheader(recommended_webtoons.columns[3])
             st.write(recommended_webtoons.iloc[i,3])
-            btn2 = st.button('보기', key=i)
-            if btn2:
-                webbrowser.open_new_tab(recommended_webtoons.iloc[i,4])
+
+            st.subheader('[보러가기]({})'.format(recommended_webtoons.iloc[i,4]))
+            
             st.markdown('---')
 
         
-            # go.scatter()
+
 
     else :
         st.text('검색 결과가 없습니다.')
