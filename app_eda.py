@@ -34,14 +34,18 @@ def run_eda() :
     st.plotly_chart(fig5)
 
     # 년도별 조회수, 구독자수, 좋아요수 평균
+    st.write('해당 년도에 나온 작품의 조회수 평균')
     st.line_chart(df.groupby('released_year')[['view[M]']].mean())
+    st.write('해당 년도에 나온 작품의 구독자수 평균')
     st.line_chart(df.groupby('released_year')[['subscribe[M]']].mean())
+    st.write('해당 년도에 나온 작품의 좋아요수 평균')
     st.line_chart(df.groupby('released_year')[['likes[M]']].mean())
 
 
 
 
     # 상관관계
+    st.write('컬럼별 상관관계')
     fig2 = plt.figure()
     sns.heatmap(df.corr(), annot=True, cmap='Blues')
     plt.title('Correlation')
