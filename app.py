@@ -4,8 +4,10 @@ from app_eda import run_eda
 
 from app_home import run_home
 from PIL import Image
+from streamlit_option_menu import option_menu
+
 def main() :
-    
+    st.set_page_config(layout="wide")
     st.title('Webtoons')
     menu = ['Home', 'EDA']
     with st.sidebar:
